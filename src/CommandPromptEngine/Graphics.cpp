@@ -31,7 +31,7 @@ bool Graphics::setBufferSize(const int width, const int height)
 	return true;
 }
 
-CHAR_INFO* const Graphics::getBuffer() const
+const CHAR_INFO* Graphics::getBuffer() const
 {
 	return m_consoleBuffer;
 }

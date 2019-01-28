@@ -33,7 +33,7 @@ public:
 	*
 	* @return CHAR_INFO* Pointer to the buffer array. Values are immutable.
 	*/
-	CHAR_INFO* const getBuffer() const;
+	const CHAR_INFO* getBuffer() const;
 
 	/**
 	* Get the console screen buffer size.
