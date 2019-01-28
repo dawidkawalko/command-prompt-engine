@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# Visual studio stuff
+*.vcxproj*
+*.sln
+.vs
+Debug/
+Release/
+
+# Other project files
+*.cpp
