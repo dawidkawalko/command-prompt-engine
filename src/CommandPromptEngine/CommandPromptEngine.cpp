@@ -72,6 +72,8 @@ bool CommandPromptEngine::setSize(const int width, const int height, const int f
 		return false;
 	}
 
+	m_graphics.setBufferSize(m_screenWidth, m_screenHeight);
+
 	return true;
 }
 
@@ -84,5 +86,8 @@ void CommandPromptEngine::start()
 	{
 		// Call user update method
 		m_isRunning = userUpdate();
+
+		// Draw
+		WriteConsoleOutput(m_consoleOutHandle, m_graphics.getBuffer(), m_graphics.getBufferSize(), { 0, 0 }, &m_consoleRectangle);
 	}
 }

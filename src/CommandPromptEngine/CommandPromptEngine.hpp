@@ -1,6 +1,7 @@
 #ifndef __CommandPromptEngine__
 #define __CommandPromptEngine__
 
+#include "Graphics.hpp"
 #include <Windows.h>
 
 /**
@@ -63,6 +64,7 @@ private:
 
 	HANDLE m_consoleOutHandle;
 	SMALL_RECT m_consoleRectangle;
+	Graphics m_graphics;
 };
 
 #endif // __CommandPromptEngine__
