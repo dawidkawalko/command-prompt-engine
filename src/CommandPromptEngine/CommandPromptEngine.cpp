@@ -84,6 +84,9 @@ void CommandPromptEngine::start()
 
 	while (m_isRunning)
 	{
+		// Get keyboard input
+		m_keyboard.getUserInput();
+
 		// Call user update method
 		m_isRunning = userUpdate();
 

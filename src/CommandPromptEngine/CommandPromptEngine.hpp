@@ -2,6 +2,7 @@
 #define __CommandPromptEngine__
 
 #include "Graphics.hpp"
+#include "Keyboard.hpp"
 #include <Windows.h>
 
 /**
@@ -57,6 +58,8 @@ protected:
 	*/
 	virtual bool userUpdate() = 0;
 
+	Keyboard m_keyboard;
+
 private:
 	int m_screenWidth;
 	int m_screenHeight;
@@ -64,6 +67,7 @@ private:
 
 	HANDLE m_consoleOutHandle;
 	SMALL_RECT m_consoleRectangle;
+
 	Graphics m_graphics;
 };
 
