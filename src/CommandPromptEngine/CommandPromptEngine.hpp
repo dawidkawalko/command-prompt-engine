@@ -58,7 +58,38 @@ protected:
 	*/
 	virtual bool userUpdate() = 0;
 
-	Keyboard m_keyboard;
+	/**
+	* Check if a key was pressed.
+	*
+	* @param keyCode ASCII key value.
+	* @return bool True if pressed.
+	*/
+	bool keyPressed(const int keyCode) const;
+
+	/**
+	* Check if a key was released.
+	*
+	* @param keyCode ASCII key value.
+	* @return bool True if released.
+	*/
+	bool keyReleased(const int keyCode) const;
+
+	/**
+	* Check if a key is currently being held.
+	*
+	* @param keyCode ASCII key value.
+	* @return bool True if held.
+	*/
+	bool keyHeld(const int keyCode) const;
+
+	/**
+	* Fill a single cell with a given color.
+	*
+	* @param x
+	* @param y
+	* @param color Color code.
+	*/
+	void fill(const int x, const int y, const int color);
 
 private:
 	int m_screenWidth;
@@ -68,6 +99,7 @@ private:
 	HANDLE m_consoleOutHandle;
 	SMALL_RECT m_consoleRectangle;
 
+	Keyboard m_keyboard;
 	Graphics m_graphics;
 };
 

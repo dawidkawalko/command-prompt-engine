@@ -87,10 +87,39 @@ void CommandPromptEngine::start()
 		// Get keyboard input
 		m_keyboard.getUserInput();
 
+		// Clear the buffer
+		for (int x = 0; x < m_screenWidth; ++x)
+		{
+			for (int y = 0; y < m_screenHeight; ++y)
+			{
+				fill(x, y, 0x00);
+			}
+		}
+
 		// Call user update method
 		m_isRunning = userUpdate();
 
 		// Draw
 		WriteConsoleOutput(m_consoleOutHandle, m_graphics.getBuffer(), m_graphics.getBufferSize(), { 0, 0 }, &m_consoleRectangle);
 	}
+}
+
+bool CommandPromptEngine::keyPressed(const int keyCode) const
+{
+	return m_keyboard.wasPressed(keyCode);
+}
+
+bool CommandPromptEngine::keyReleased(const int keyCode) const
+{
+	return m_keyboard.wasReleased(keyCode);
+}
+
+bool CommandPromptEngine::keyHeld(const int keyCode) const
+{
+	return m_keyboard.isHeld(keyCode);
+}
+
+void CommandPromptEngine::fill(const int x, const int y, const int color)
+{
+	m_graphics.fillColor(x, y, color);
 }
