@@ -1,4 +1,5 @@
 #include "CommandPromptEngine.hpp"
+#include <chrono>
 
 CommandPromptEngine::CommandPromptEngine()
 	: m_screenWidth(0), m_screenHeight(0), m_isRunning(false),
@@ -82,8 +83,18 @@ void CommandPromptEngine::start()
 	// Call user startup method
 	m_isRunning = userStartup();
 
+	auto previousTime = std::chrono::system_clock::now();
+	auto currentTime = std::chrono::system_clock::now();
+
 	while (m_isRunning)
 	{
+		// Calculate delta time
+		previousTime = currentTime;
+		currentTime = std::chrono::system_clock::now();
+
+		auto timeDifference = currentTime - previousTime;
+		double deltaTime = timeDifference.count();
+
 		// Get keyboard input
 		m_keyboard.getUserInput();
 
@@ -97,7 +108,7 @@ void CommandPromptEngine::start()
 		}
 
 		// Call user update method
-		m_isRunning = userUpdate();
+		m_isRunning = userUpdate(deltaTime);
 
 		// Draw
 		WriteConsoleOutput(m_consoleOutHandle, m_graphics.getBuffer(), m_graphics.getBufferSize(), { 0, 0 }, &m_consoleRectangle);

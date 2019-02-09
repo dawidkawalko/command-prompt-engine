@@ -56,7 +56,7 @@ protected:
 	*
 	* @return bool True on success.
 	*/
-	virtual bool userUpdate() = 0;
+	virtual bool userUpdate(const double deltaTime) = 0;
 
 	/**
 	* Check if a key was pressed.
