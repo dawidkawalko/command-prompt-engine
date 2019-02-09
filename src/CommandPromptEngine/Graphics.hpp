@@ -42,6 +42,15 @@ public:
 	*/
 	COORD getBufferSize() const;
 
+	/**
+	* Fill a single cell with a given color.
+	*
+	* @param x
+	* @param y
+	* @param color Color code.
+	*/
+	void fillColor(const int x, const int y, const int color);
+
 private:
 	int m_bufferWidth;
 	int m_bufferHeight;

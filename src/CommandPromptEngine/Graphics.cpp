@@ -40,3 +40,14 @@ COORD Graphics::getBufferSize() const
 {
 	return { short(m_bufferWidth), short(m_bufferHeight) };
 }
+
+void Graphics::fillColor(const int x, const int y, const int color)
+{
+	if (x < 0 || x >= m_bufferWidth || y < 0 || y >= m_bufferHeight)
+	{
+		return;
+	}
+
+	m_consoleBuffer[y*m_bufferWidth + x].Char.UnicodeChar = ' ';
+	m_consoleBuffer[y*m_bufferWidth + x].Attributes = color;
+}
